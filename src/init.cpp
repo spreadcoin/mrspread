@@ -37,8 +37,6 @@ CClientUIInterface uiInterface;
 #define MIN_CORE_FILEDESCRIPTORS 150
 #endif
 
-void startBTTrackers();
-void stopBTTrackers();
 
 // Used to pass flags to the Bind() function
 enum BindFlags {
@@ -98,7 +96,6 @@ void Shutdown()
     if (!lockShutdown) return;
 
     RenameThread("bitcoin-shutoff");
-    stopBTTrackers();
     nTransactionsUpdated++;
     StopRPCThreads();
     ShutdownRPCMining();
@@ -1177,8 +1174,6 @@ bool AppInit2(boost::thread_group& threadGroup)
         // Run a thread to flush wallet periodically
         threadGroup.create_thread(boost::bind(&ThreadFlushWalletDB, boost::ref(pwalletMain->strWalletFile)));
     }
-
-    startBTTrackers();
 
     return !fRequestShutdown;
 }
