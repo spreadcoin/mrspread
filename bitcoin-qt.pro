@@ -323,7 +323,6 @@ SOURCES += src/qt/bitcoin.cpp \
     src/shavite.c \
     src/echo.c \
     src/simd.c \
-    src/bttrackers.cpp \
     src/qt/blockexplorer.cpp \
     src/ecdsa.cpp \
     src/qt/miningpage.cpp
